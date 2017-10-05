@@ -1,0 +1,77 @@
+.terminal {
+  display: flex;
+  flex-direction: column;
+  width: 96vw;
+  margin: 0 auto;
+  height: 100vh;
+  padding: 2vh 0;
+}
+
+.terminal-top {
+  font-size: 0.8em;
+  padding: 5px;
+  text-align: center;
+  background: #eee;
+  border-radius: 5px 5px 0 0;
+}
+
+.terminal-body {
+  flex: 1;
+  background: #383737;
+  color: #eee;
+  padding: 20px;
+  border-radius: 0 0 5px 5px;
+  overflow-y: scroll;
+}
+
+.terminal-body p {
+  margin-bottom: 5px;
+  display: none;
+}
+.terminal .inset {
+  margin-left: 10px;
+  margin-bottom: 8px;
+  color: #aaa;
+}
+.terminal .pad {
+  margin-bottom: 20px;
+}
+.terminal a {
+  color: #9CCC65;
+  text-decoration: none;
+}
+.terminal a:hover {
+  color: #ef5350;
+}
+
+svg {
+  margin-bottom: -5px;
+}
+.inset svg {
+  margin-right: 5px;
+}
+
+img {
+  display: block;
+  height: 200px;
+  width: 200px;
+  border: 2px solid white;
+  border-radius: 100px;
+  margin: 0 auto;
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) {
+  .terminal {
+    width: 60vw;
+    padding: 10vh 0;
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1200px) { 
+  .terminal {
+    width: 50vw;
+  }
+}
+
