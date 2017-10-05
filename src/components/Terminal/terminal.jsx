@@ -19,7 +19,6 @@ class Terminal extends React.Component {
     this.phone = <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>;
 
     this.me = <img src={me} alt="couldn't find my looks :(" />
-    this.blinker = <div className="blink" class="blink">▋</div>;
   }
 
   render() {
@@ -38,16 +37,16 @@ class Terminal extends React.Component {
           <p>{this.chev} <span>trev.from</span></p>
           <p className="inset pad">{this.chevs} reno, nv</p>
 
-          <p>{this.chev} <span>trev.education</span></p>
+          <p>{this.chev} <span>trev.edu.school</span></p>
           <p className="inset pad">{this.chevs} university of michigan</p>
-          <p>{this.chev} <span>trev.major</span></p>
+          <p>{this.chev} <span>trev.edu.major</span></p>
           <p className="inset pad">{this.chevs} computer science engineering</p>
-          <p>{this.chev} <span>trev.minor</span></p>
+          <p>{this.chev} <span>trev.edu.minor</span></p>
           <p className="inset pad">{this.chevs} mathematics</p>
 
           <p>{this.chev} <span>trev.interests</span></p>
-          <p className="inset">{this.chevs} traveling</p>
           <p className="inset">{this.chevs} food</p>
+          <p className="inset">{this.chevs} traveling</p>
           <p className="inset">{this.chevs} motorcycles</p>
           <p className="inset pad">{this.chevs} edm</p>
 
@@ -69,7 +68,7 @@ class Terminal extends React.Component {
           <p className="inset">{this.chevs} {this.mail} trevercullen@gmail.com</p>
           <p className="inset pad">{this.chevs} {this.phone} 775-544-0666</p>
 
-          <p>{this.chev} {this.blinker}</p>
+          <p>{this.chev}</p>
         </div>
       </div>
     );
