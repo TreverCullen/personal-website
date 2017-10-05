@@ -1,3 +1,3 @@
-#my personal website
+# my personal website
 
-minimal, material design
+minimal, material, amazing

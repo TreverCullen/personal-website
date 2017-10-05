@@ -3,8 +3,6 @@ import React from 'react';
 import $ from 'jquery';
 import me from './me.jpeg';
 
-// import feather from 'feather-icons';
-
 class Terminal extends React.Component {
 
   constructor() {
@@ -21,12 +19,10 @@ class Terminal extends React.Component {
     this.phone = <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>;
 
     this.me = <img src={me} alt="couldn't find my looks :(" />
+    this.blinker = <div className="blink" class="blink">▋</div>;
   }
 
   render() {
-    // let temp = feather.toSvg('home');
-    // temp = temp.replace('class', 'className');
-
     return (
       <div className="terminal">
         <div className="terminal-top">{this.home} trevercullen - home</div>
@@ -35,7 +31,7 @@ class Terminal extends React.Component {
 
           <p>{this.chev} <span>whoami</span></p>
           <p className="inset pad">{this.chevs} trever thomas cullen</p>
-          <p>{this.chev} <span>trev.show</span></p>
+          <p>{this.chev} <span>trev.picture</span></p>
           <p className="inset pad slow">{this.chevs} loading me.jpg...</p>
           <p className="inset pad">{this.me}</p>
           <p className="inset pad">{this.chevs} ...done</p>
@@ -50,10 +46,10 @@ class Terminal extends React.Component {
           <p className="inset pad">{this.chevs} mathematics</p>
 
           <p>{this.chev} <span>trev.interests</span></p>
-          <p className="inset">{this.chevs} code</p>
-          <p className="inset">{this.chevs} motorcycles</p>
           <p className="inset">{this.chevs} traveling</p>
-          <p className="inset pad">{this.chevs} eating</p>
+          <p className="inset">{this.chevs} food</p>
+          <p className="inset">{this.chevs} motorcycles</p>
+          <p className="inset pad">{this.chevs} edm</p>
 
           <p>{this.chev} <span>trev.media</span></p>
           <p className="inset">{this.chevs} 
@@ -72,6 +68,8 @@ class Terminal extends React.Component {
           <p>{this.chev} <span>trev.contact</span></p>
           <p className="inset">{this.chevs} {this.mail} trevercullen@gmail.com</p>
           <p className="inset pad">{this.chevs} {this.phone} 775-544-0666</p>
+
+          <p>{this.chev} {this.blinker}</p>
         </div>
       </div>
     );
@@ -83,19 +81,22 @@ class Terminal extends React.Component {
   }
 
   showContent = (elt) => {
-    if (!elt.is("p"))
+    if (!elt.is('p'))
       return;
 
-    if (elt.hasClass('slow')) {
-      elt.fadeIn(300).delay(500).promise().then(() => {
+    if (elt.hasClass('inset')) {
+      $('.blink').remove();
+      if (elt.hasClass('slow')) {
+        elt.fadeIn(300).delay(500).promise().then(() => {
+          this.showContent(elt.next());
+        });
+      }
+      else {
+        elt.fadeIn(300);
         this.showContent(elt.next());
-      });
+      }
     }
-    else if (elt.hasClass("inset")) {
-      elt.fadeIn(300);
-      this.scrollTerminal();
-      this.showContent(elt.next());
-    }
+
     else {
       this.typeContent(elt).then(() => {
         this.showContent(elt.next());
@@ -105,20 +106,23 @@ class Terminal extends React.Component {
 
   typeContent = (elt) => {
     return new Promise((resolve) => {
+      let type_time = 130;
       let span = elt.find('span');
       let content = span.text().split('');
-      span.text('');
 
+      span.text('');
       elt.fadeIn(300);
+      elt.append('<div className="blink" class="blink">▋</div>');
       this.scrollTerminal();
-      elt.delay(130 * content.length + 1000).promise().then(() => {
+
+      elt.delay(type_time * content.length + 1000).promise().then(() => {
         resolve();
       });
 
       $.each(content, (idx, val) => {
         setTimeout(() => {
           span.append(val);
-        }, idx * 130 + 1000);
+        }, idx * type_time + 1000);
       });
     });
   }
