@@ -26,8 +26,9 @@ class Terminal extends React.Component {
     return (
       <div className="terminal">
         <div className="terminal-top">{this.home} trevercullen - home</div>
-
         <div className="terminal-body">
+
+          <p className="inset">{this.chevs} connection opened on {this.getDateString()}</p>
 
           <p>{this.chev} <span>whoami</span></p>
           <p className="inset pad">{this.chevs} trever thomas cullen</p>
@@ -77,7 +78,8 @@ class Terminal extends React.Component {
           <p className="inset">{this.chevs} {this.mail} trevercullen@gmail.com</p>
           <p className="inset pad">{this.chevs} {this.phone} 775-544-0666</p>
 
-          <p>{this.chev}</p>
+          <p>{this.chev} <span>exit</span></p>
+          <p className="inset pad">{this.chevs} connection closed on {this.getDateString()}</p>
         </div>
       </div>
     );
@@ -101,6 +103,7 @@ class Terminal extends React.Component {
       }
       else {
         elt.fadeIn(300);
+        this.scrollTerminal();
         this.showContent(elt.next());
       }
     }
@@ -138,6 +141,11 @@ class Terminal extends React.Component {
   scrollTerminal = () => {
     let container = $('.terminal-body');
     container.scrollTop(container[0].scrollHeight);
+  }
+
+  getDateString = () => {
+    let date = new Date();
+    return date.toString();
   }
 }
 
